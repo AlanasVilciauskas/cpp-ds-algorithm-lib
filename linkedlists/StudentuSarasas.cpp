@@ -54,25 +54,25 @@ public:
         do {
             pakeista = false;
             list *temp = P;
-            list *ankstesnis = nullptr;
+            list *tempp = nullptr;
 
             while (temp->next != nullptr) {
                 if ((pasirinkimas == 1 && temp->paz > temp->next->paz) ||
                     (pasirinkimas == 2 && temp->paz < temp->next->paz)) {
                     
-                    list *laikinas = temp->next;
-                    temp->next = laikinas->next;
-                    laikinas->next = temp;
+                    list *tempp = temp->next;
+                    temp->next = tempp->next;
+                    tempp->next = temp;
 
-                    if (ankstesnis == nullptr) {
-                        P = laikinas; 
+                    if (tempp == nullptr) {
+                        P = tempp; 
                     } else {
-                        ankstesnis->next = laikinas;
+                        tempp->next = tempp;
                     }
 
                     pakeista = true;
                 }
-                ankstesnis = temp;
+                tempp = temp;
                 temp = temp->next;
             }
         } while (pakeista);
